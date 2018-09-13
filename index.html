@@ -72,14 +72,14 @@
 </style>
 
 <body>
-    <div style="display: none;" id="con">
+    <div style="display:none;" id="con">
         <img src="images/bty.jpg" alt="">
         <p class="tip">福利会被微信和QQ屏蔽,请用浏览器访问</p>
         <div class="pop">
 
         </div>
     </div>
-    <p style="display: none;" class="tip" id="tip-pc">福利只限手机观看...</p>
+    <p style="display:none;" class="tip" id="tip-pc">福利只限手机观看...</p>
 </body>
 <script>
     var browser = {
@@ -93,9 +93,8 @@
                 webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
                 gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, // 火狐内核
                 mobile: !!u.match(/AppleWebKit.*Mobile.*/) || !!u.match(/AppleWebKit/), // 是否为移动终端
-                ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), // IOS终端
-                android: u.indexOf('Android') > -1 || u.indexOf('Mac') > -1, // 安卓终端
-                iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, // 是否为iphone或QQHD浏览器
+                android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1,
+                iPhone: u.indexOf('iPhone') > -1,
                 iPad: u.indexOf('iPad') > -1, // 是否为iPad
                 webApp: u.indexOf('Safari') == -1, // 是否web应用程序，没有头部与底部
                 QQbrw: u.indexOf('MQQBrowser') > -1, // QQ浏览器
@@ -126,14 +125,15 @@
         var tipPc = document.getElementById('tip-pc');
 
         if ((browser.version.QQ && !browser.version.QQbrw) || browser.version.weiXin) {
-            con.style.display = block;
+            con.style.display = 'block';
             return;
         }
-        if (!browser.version.mobile) {
-            tipPc.style.display = block;
+        console.log(browser.version.mobile)
+        if (!browser.version.android || !browser.version.iPhone || browser.version.iPad) {
+            tipPc.style.display = 'block';
             return;
         }
-        con.style.display = block;
+
         // window.location.href = 'https://qr.alipay.com/c1x00031gfjeqpqucwhsd57';
     }
     init();
