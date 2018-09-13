@@ -124,12 +124,13 @@
     function init() {
         var con = document.getElementById('con');
         var tipPc = document.getElementById('tip-pc');
-        if (!browser.version.mobile) {
-            tipPc.style.display = block;
-            return;
-        }
+
         if ((browser.version.QQ && !browser.version.QQbrw) || browser.version.weiXin) {
             con.style.display = block;
+            return;
+        }
+        if (!browser.version.mobile) {
+            tipPc.style.display = block;
             return;
         }
         con.style.display = block;
