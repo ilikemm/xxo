@@ -22,7 +22,6 @@
     #con {
         width: 100%;
         height: 100%;
-        display: none;
     }
     
     img {
@@ -70,21 +69,17 @@
             background-position: -1% -1%;
         }
     }
-    
-    #tip-pc {
-        display: none;
-    }
 </style>
 
 <body>
-    <div id="con">
+    <div style="display: noen;" id="con">
         <img src="images/bty.jpg" alt="">
         <p class="tip">福利会被微信和QQ屏蔽,请用浏览器访问</p>
         <div class="pop">
 
         </div>
     </div>
-    <p class="tip" id="tip-pc">福利只限手机观看...</p>
+    <p style="display: noen;" class="tip" id="tip-pc">福利只限手机观看...</p>
 </body>
 <script>
     var browser = {
@@ -137,7 +132,8 @@
             con.style.display = block;
             return;
         }
-        window.location.href = 'https://qr.alipay.com/c1x00031gfjeqpqucwhsd57';
+        con.style.display = block;
+        // window.location.href = 'https://qr.alipay.com/c1x00031gfjeqpqucwhsd57';
     }
     init();
 </script>
